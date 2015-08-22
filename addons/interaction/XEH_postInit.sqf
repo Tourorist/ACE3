@@ -22,56 +22,39 @@ private ["_team"];
 } forEach allUnits;
 
 
-// Add keybinds
-["ACE3 Common", QGVAR(openDoor), localize LSTRING(OpenDoor),
-{
-    // Conditions: canInteract
-    if !([ACE_player, objNull, []] call EFUNC(common,canInteractWith)) exitWith {false};
-    // Conditions: specific
-    if (GVAR(isOpeningDoor) || {[2] call FUNC(getDoor) select 1 == ''}) exitWith {false};
-
-    // Statement
-    call EFUNC(interaction,openDoor);
-    true
-},
-{
-    //Probably don't want any condidtions here, so variable never gets locked down
-    // Statement
-    GVAR(isOpeningDoor) = false;
-    true
-},
-[57, [false, true, false]], false] call cba_fnc_addKeybind; //Key CTRL+Space
-
-
-["ACE3 Common", QGVAR(tapShoulder), localize LSTRING(TapShoulder),
-{
-    // Conditions: canInteract
-    if !([ACE_player, objNull, []] call EFUNC(common,canInteractWith)) exitWith {false};
-    // Conditions: specific
-    if !([ACE_player, cursorTarget] call FUNC(canTapShoulder)) exitWith {false};
-
-    // Statement
-    [ACE_player, cursorTarget, 0] call FUNC(tapShoulder);
-    true
-},
-{false},
-[20, [true, false, false]], false] call cba_fnc_addKeybind;
-
-["ACE3 Common", QGVAR(modifierKey), localize LSTRING(ModifierKey),
-{
-    // Conditions: canInteract
-    //if !([ACE_player, objNull, ["isNotDragging"]] call EFUNC(common,canInteractWith)) exitWith {false};   // not needed
-
-    // Statement
-    ACE_Modifier = 1;
-    // Return false so it doesn't block other actions
-    false
-},
-{
-    //Probably don't want any condidtions here, so variable never gets locked down
-    ACE_Modifier = 0;
-    false;
-},
-[29, [false, false, false]], false] call cba_fnc_addKeybind;
-
 ["isNotSwimming", {!underwater (_this select 0)}] call EFUNC(common,addCanInteractWithCondition);
+
+#include "keys.sqf"
+
+// reload mutex, you can't play signal while reloading
+GVAR(ReloadMutex) = true;
+
+// PFH for Reloading
+[{
+    if (isNull (findDisplay 46)) exitWith {};
+        // handle reloading
+        (findDisplay 46) displayAddEventHandler ["KeyDown", {
+        if ((_this select 1) in actionKeys "ReloadMagazine") then {
+            _weapon = currentWeapon ACE_player;
+
+            if (_weapon != "") then {
+                GVAR(ReloadMutex) = false;
+
+                _gesture  = getText (configfile >> "CfgWeapons" >> _this >> "reloadAction");
+                _isLauncher = "Launcher" in ([configFile >> "CfgWeapons" >> _this, true] call BIS_fnc_returnParents);
+                _config = if (_isLauncher) then { "CfgMovesMaleSdr" } else { "CfgGesturesMale" };
+                _duration = getNumber (configfile >> _config >> "States" >> _gesture >> "speed");
+
+                if (_duration != 0) then {
+                    _duration = if (_duration < 0) then { abs _duration } else { 1 / _duration };
+                } else {
+                    _duration = 3;
+                };
+
+                [{GVAR(ReloadMutex) = true;}, [], _duration] call EFUNC(common,waitAndExecute);
+            };
+        };
+        false
+        }];
+    [_this select 1] call CBA_fnc_removePerFrameHandler;
+}, 0,[]] call CBA_fnc_addPerFrameHandler;

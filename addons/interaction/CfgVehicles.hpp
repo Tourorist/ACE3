@@ -273,106 +273,114 @@ class CfgVehicles {
 
             class ACE_Gestures {
                 displayName = CSTRING(Gestures);
-                condition = "canStand _target";
+                condition = QUOTE(canStand _target && GVAR(ReloadMutex));
                 statement = "";
                 showDisabled = 1;
                 priority = 3.5;
                 icon = PATHTOF(UI\gestures_ca.paa);
-                hotkey = "G";
 
-                /*class ACE_Gesture_Advance {
-                    displayName = CSTRING(Gestures_Attack);
-                    condition = "canStand _target";
-                    statement = "_target playActionNow 'gestureAttack';";
+                class ACE_Gesture_Forward {
+                    displayName = CSTRING(FORWARD);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(FORWARD)) call FUNC(playSignal));
                     showDisabled = 1;
-                    priority = 2.0;
-                };*/
+                    priority = 1.9;
+                };
+
+                class ACE_Gesture_Regroup {
+                    displayName = CSTRING(REGROUP);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(REGROUP)) call FUNC(playSignal));
+                    showDisabled = 1;
+                    priority = 1.8;
+                };
+
+                class ACE_Gesture_Stop {
+                    displayName = CSTRING(STOP);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(STOP)) call FUNC(playSignal));
+                    showDisabled = 1;
+                    priority = 1.7;
+                };
+
+                class ACE_Gesture_Cover {
+                    displayName = CSTRING(Gestures_Cover);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(COVER)) call FUNC(playSignal));
+                    showDisabled = 1;
+                    priority = 1.6;
+                };
+
+                class ACE_Gesture_Point {
+                    displayName = CSTRING(POINT);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(POINT)) call FUNC(playSignal));
+                    showDisabled = 1;
+                    priority = 1.5;
+                };
+
+                class ACE_Gesture_Engage {
+                    displayName = CSTRING(ENGAGE);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(ENGAGE)) call FUNC(playSignal));
+                    showDisabled = 1;
+                    priority = 1.4;
+                };
+
+                class ACE_Gesture_Hold {
+                    displayName = CSTRING(HOLD);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(HOLD)) call FUNC(playSignal));
+                    showDisabled = 1;
+                    priority = 1.3;
+                };
+
+                class ACE_Gesture_Warning {
+                    displayName = CSTRING(WARNINGS);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
+                    statement = QUOTE(QUOTE(QGVAR(WARNINGS)) call FUNC(playSignal));
+                    showDisabled = 1;
+                    priority = 1.2;
+                };
+
                 class ACE_Gesture_Advance {
                     displayName = CSTRING(Gestures_Advance);
-                    condition = QUOTE(canStand _target);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
                     statement = QUOTE(_target playActionNow 'gestureAdvance';);
                     showDisabled = 1;
                     priority = 1.9;
-                    hotkey = "1";
                 };
+
                 class ACE_Gesture_Go {
                     displayName = CSTRING(Gestures_Go);
-                    condition = QUOTE(canStand _target);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
                     statement = QUOTE(_target playActionNow ([ARR_2('gestureGo','gestureGoB')] select floor random 2););
                     showDisabled = 1;
                     priority = 1.8;
-                    hotkey = "2";
                 };
+
                 class ACE_Gesture_Follow {
                     displayName = CSTRING(Gestures_Follow);
-                    condition = QUOTE(canStand _target);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
                     statement = QUOTE(_target playActionNow 'gestureFollow';);
                     showDisabled = 1;
                     priority = 1.7;
-                    hotkey = "3";
                 };
-                /*class ACE_Gesture_Point {
-                    displayName = CSTRING(Gestures_Point);
-                    condition = QUOTE(canStand _target);
-                    statement = QUOTE(_target playActionNow 'gesturePoint';);
-                    showDisabled = 1;
-                    priority = 1.6;
-                };*/
+
                 class ACE_Gesture_Up {
                     displayName = CSTRING(Gestures_Up);
-                    condition = QUOTE(canStand _target);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
                     statement = QUOTE(_target playActionNow 'gestureUp';);
                     showDisabled = 1;
                     priority = 1.5;
-                    hotkey = "4";
                 };
-                class ACE_Gesture_Cover {
-                    displayName = CSTRING(Gestures_Cover);
-                    condition = QUOTE(canStand _target);
-                    statement = QUOTE(_target playActionNow 'gestureCover';);
-                    showDisabled = 1;
-                    priority = 1.4;
-                    hotkey = "5";
-                };
-                class ACE_Gesture_CeaseFire {
-                    displayName = CSTRING(Gestures_Cease_Fire);
-                    condition = QUOTE(canStand _target);
-                    statement = QUOTE(_target playActionNow 'gestureCeaseFire';);
-                    showDisabled = 1;
-                    priority = 1.3;
-                    hotkey = "6";
-                };
+
                 class ACE_Gesture_Freeze {
                     displayName = CSTRING(Gestures_Freeze);
-                    condition = QUOTE(canStand _target);
+                    condition = QUOTE(canStand _target && GVAR(ReloadMutex));
                     statement = QUOTE(_target playActionNow 'gestureFreeze';);
                     showDisabled = 1;
                     priority = 1.2;
-                    hotkey = "7";
-                };
-                class ACE_Gesture_Yes {
-                    displayName = ECSTRING(common,Yes);
-                    condition = QUOTE(canStand _target);
-                    statement = QUOTE(_target playActionNow ([ARR_2('gestureYes','gestureNod')] select floor random 2););
-                    showDisabled = 1;
-                    priority = 1.1;
-                    hotkey = "8";
-                };
-                class ACE_Gesture_No {
-                    displayName = ECSTRING(common,No);
-                    condition = QUOTE(canStand _target);
-                    statement = QUOTE(_target playActionNow 'gestureNo';);
-                    showDisabled = 1;
-                    priority = 1.0;
-                    hotkey = "9";
-                };
-                class ACE_Gesture_Hi {
-                    displayName = CSTRING(Gestures_Hi);
-                    condition = QUOTE(canStand _target);
-                    statement = QUOTE(_target playActionNow ([ARR_3('gestureHi','gestureHiB','gestureHiC')] select floor random 3););
-                    showDisabled = 1;
-                    priority = 0.9;
-                    hotkey = "0";
                 };
             };
 
@@ -548,7 +556,7 @@ class CfgVehicles {
             };
         };
     };
-    
+
     class StaticMGWeapon: StaticWeapon {};
     class HMG_01_base_F: StaticMGWeapon {};
     class HMG_01_high_base_F: HMG_01_base_F {
@@ -557,14 +565,14 @@ class CfgVehicles {
                   position = "[-0.172852,0.164063,-0.476091]";
               };
           };
-    };   
+    };
     class AA_01_base_F: StaticMGWeapon {
           class ACE_Actions: ACE_Actions {
               class ACE_MainActions: ACE_MainActions {
                   position = "[0,0.515869,-0.200671]";
               };
           };
-    };   
+    };
     class AT_01_base_F: StaticMGWeapon {
           class ACE_Actions: ACE_Actions {
               class ACE_MainActions: ACE_MainActions {

@@ -12,6 +12,7 @@ class CfgPatches {
     };
 };
 
+#include "cfgMovesBasic.hpp"
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
 #include "Menu_Config.hpp"
