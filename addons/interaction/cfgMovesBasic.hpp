@@ -1,43 +1,43 @@
 class CfgMovesBasic {
     class ManActions {
-        GVAR(FORWARD) = QGVAR(FORWARD);
-        GVAR(STOP) = QGVAR(STOP);
-        GVAR(COVER) = QGVAR(COVER);
-        GVAR(REGROUP) = QGVAR(REGROUP);
-        GVAR(ENGAGE) = QGVAR(ENGAGE);
-        GVAR(POINT) = QGVAR(POINT);
-        GVAR(HOLD) = QGVAR(HOLD);
-        GVAR(WARNINGS) = QGVAR(WARNINGS);
+        GVAR(forward) = QGVAR(forward);
+        GVAR(stop) = QGVAR(stop);
+        GVAR(cover) = QGVAR(cover);
+        GVAR(regroup) = QGVAR(regroup);
+        GVAR(engage) = QGVAR(engage);
+        GVAR(point) = QGVAR(point);
+        GVAR(hold) = QGVAR(hold);
+        GVAR(warning) = QGVAR(warningS);
 
-        GVAR(FORWARDStandLowered) = QGVAR(FORWARDStandLowered);
-        GVAR(STOPStandLowered) = QGVAR(STOPStandLowered);
-        GVAR(COVERtandLowered) = QGVAR(COVERtandLowered);
-        GVAR(REGROUPStandLowered) = QGVAR(REGROUPStandLowered);
-        GVAR(ENGAGEStandLowered) = QGVAR(ENGAGEStandLowered);
-        GVAR(POINTStandLowered) = QGVAR(POINTStandLowered);
-        GVAR(HOLDStandLowered) = QGVAR(HOLDStandLowered);
-        GVAR(WARNINGStandLowered) = QGVAR(WARNINGStandLowered);
+        GVAR(forwardStandLowered) = QGVAR(forwardStandLowered);
+        GVAR(stopStandLowered) = QGVAR(stopStandLowered);
+        GVAR(covertandLowered) = QGVAR(covertandLowered);
+        GVAR(regroupStandLowered) = QGVAR(regroupStandLowered);
+        GVAR(engageStandLowered) = QGVAR(engageStandLowered);
+        GVAR(pointStandLowered) = QGVAR(pointStandLowered);
+        GVAR(holdStandLowered) = QGVAR(holdStandLowered);
+        GVAR(warningtandLowered) = QGVAR(warningtandLowered);
     };
 
     class Actions {
         class NoActions: ManActions {
-            GVAR(FORWARD)[] = {QGVAR(FORWARD), "Gesture"};
-            GVAR(STOP)[] = {QGVAR(STOP), "Gesture"};
-            GVAR(COVER)[] = {QGVAR(COVER), "Gesture"};
-            GVAR(REGROUP)[] = {QGVAR(REGROUP), "Gesture"};
-            GVAR(ENGAGE)[] = {QGVAR(ENGAGE), "Gesture"};
-            GVAR(POINT)[] = {QGVAR(POINT), "Gesture"};
-            GVAR(HOLD)[] = {QGVAR(HOLD), "Gesture"};
-            GVAR(WARNINGS)[] = {QGVAR(WARNINGS), "Gesture"};
+            GVAR(forward)[] = {QGVAR(forward), "Gesture"};
+            GVAR(stop)[] = {QGVAR(stop), "Gesture"};
+            GVAR(cover)[] = {QGVAR(cover), "Gesture"};
+            GVAR(regroup)[] = {QGVAR(regroup), "Gesture"};
+            GVAR(engage)[] = {QGVAR(engage), "Gesture"};
+            GVAR(point)[] = {QGVAR(point), "Gesture"};
+            GVAR(hold)[] = {QGVAR(hold), "Gesture"};
+            GVAR(warning)[] = {QGVAR(warning), "Gesture"};
 
-            GVAR(FORWARDStandLowered)[] = {QGVAR(FORWARDStandLowered), "Gesture"};
-            GVAR(STOPStandLowered)[] = {QGVAR(STOPStandLowered), "Gesture"};
-            GVAR(COVERtandLowered)[] = {QGVAR(COVERtandLowered), "Gesture"};
-            GVAR(REGROUPStandLowered)[] = {QGVAR(REGROUPStandLowered), "Gesture"};
-            GVAR(ENGAGEStandLowered)[] = {QGVAR(ENGAGEStandLowered), "Gesture"};
-            GVAR(POINTStandLowered)[] = {QGVAR(POINTStandLowered), "Gesture"};
-            GVAR(HOLDStandLowered)[] = {QGVAR(HOLDStandLowered), "Gesture"};
-            GVAR(WARNINGSStandLowered)[] = {QGVAR(WARNINGSStandLowered), "Gesture"};
+            GVAR(forwardStandLowered)[] = {QGVAR(forwardStandLowered), "Gesture"};
+            GVAR(stopStandLowered)[] = {QGVAR(stopStandLowered), "Gesture"};
+            GVAR(covertandLowered)[] = {QGVAR(covertandLowered), "Gesture"};
+            GVAR(regroupStandLowered)[] = {QGVAR(regroupStandLowered), "Gesture"};
+            GVAR(engageStandLowered)[] = {QGVAR(engageStandLowered), "Gesture"};
+            GVAR(pointStandLowered)[] = {QGVAR(pointStandLowered), "Gesture"};
+            GVAR(holdStandLowered)[] = {QGVAR(holdStandLowered), "Gesture"};
+            GVAR(warningStandLowered)[] = {QGVAR(warningStandLowered), "Gesture"};
         };
     };
 };
@@ -125,75 +125,75 @@ class CfgGesturesMale {
             rightHandIKEnd = 1;
         };
 
-        class GVAR(FORWARD): GVAR(Base) {
+        class GVAR(forward): GVAR(Base) {
             file = QUOTE(PATHTOF(anim\ace_forward.rtm));
             speed = 1;
         };
 
-        class GVAR(FORWARDStandLowered): GVAR(FORWARD) {
+        class GVAR(forwardStandLowered): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_forward_stand_lowered.rtm));
         };
 
-        class GVAR(STOP): GVAR(FORWARD) {
+        class GVAR(stop): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_stop.rtm));
             speed = 0.6;
         };
 
-        class GVAR(STOPStandLowered): GVAR(STOP) {
+        class GVAR(stopStandLowered): GVAR(stop) {
             file = QUOTE(PATHTOF(anim\ace_stop_stand_lowered.rtm));
         };
 
-        class GVAR(COVER): GVAR(FORWARD) {
+        class GVAR(cover): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_cover.rtm));
             speed = 0.8;
         };
 
-        class GVAR(COVERtandLowered): GVAR(COVER) {
+        class GVAR(covertandLowered): GVAR(cover) {
             file = QUOTE(PATHTOF(anim\ace_cover_stand_lowered.rtm));
         };
 
-        class GVAR(REGROUP): GVAR(FORWARD) {
+        class GVAR(regroup): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_regroup.rtm));
             speed = 0.8;
         };
 
-        class GVAR(REGROUPStandLowered): GVAR(REGROUP) {
+        class GVAR(regroupStandLowered): GVAR(regroup) {
             file = QUOTE(PATHTOF(anim\ace_regroup_stand_lowered.rtm));
         };
 
-        class GVAR(ENGAGE): GVAR(FORWARD) {
+        class GVAR(engage): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_engage.rtm));
             speed = 0.9;
         };
 
-        class GVAR(ENGAGEStandLowered): GVAR(ENGAGE) {
+        class GVAR(engageStandLowered): GVAR(engage) {
             file = QUOTE(PATHTOF(anim\ace_engage_stand_lowered.rtm));
         };
 
-        class GVAR(POINT): GVAR(FORWARD) {
+        class GVAR(point): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_point.rtm));
             speed = 0.8;
         };
 
-        class GVAR(POINTStandLowered): GVAR(POINT) {
+        class GVAR(pointStandLowered): GVAR(point) {
             file = QUOTE(PATHTOF(anim\ace_point_stand_lowered.rtm));
         };
 
-        class GVAR(HOLD): GVAR(FORWARD) {
+        class GVAR(hold): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_hold.rtm));
             speed = 0.8;
         };
 
-        class GVAR(HOLDStandLowered): GVAR(HOLD) {
+        class GVAR(holdStandLowered): GVAR(hold) {
             file = QUOTE(PATHTOF(anim\ace_hold_stand_lowered.rtm));
         };
 
-        class GVAR(WARNINGS): GVAR(FORWARD) {
+        class GVAR(warning): GVAR(forward) {
             file = QUOTE(PATHTOF(anim\ace_warning.rtm));
             speed = 0.8;
         };
 
-        class GVAR(WARNINGStandLowered): GVAR(WARNINGS) {
+        class GVAR(warningtandLowered): GVAR(warning) {
             file = QUOTE(PATHTOF(anim\ace_warning_stand_lowered.rtm));
         };
     };

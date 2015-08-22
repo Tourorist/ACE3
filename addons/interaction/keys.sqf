@@ -77,17 +77,18 @@
     };
     true
 } count [
-    ["STOP", DIK_2],
-    ["COVER", DIK_3],
-    ["FORWARD", DIK_4],
-    ["REGROUP", DIK_5],
-    ["ENGAGE", DIK_6],
-    ["POINT", DIK_7],
-    ["HOLD", DIK_8],
-    ["WARNINGS", DIK_9],
+    ["stop", DIK_2],
+    ["cover", DIK_3],
+    ["forward", DIK_4],
+    ["regroup", DIK_5],
+    ["engage", DIK_6],
+    ["point", DIK_7],
+    ["hold", DIK_8],
+    ["warning", DIK_9],
     ["BIgestureGo",0],
     ["BIgestureAdvance", 0],
     ["BIgestureFollow", 0],
     ["BIgestureUp", 0],
-    ["BIgestureFreeze", 0]
+    ["BIgestureFreeze", 0],
+    ["BIgestureCeaseFire", 0]
 ];
