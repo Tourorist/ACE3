@@ -57,12 +57,21 @@ TRACE_1("sending finger to",_sendFingerToPlayers);
 
 [QGVAR(fingered), _sendFingerToPlayers, [ACE_player, _fingerPosPrecise]] call EFUNC(common,targetEvent);
 
-_gesture = if (["ace_handSignals"] call EFUNC(common,isModLoaded)) then {
-    ["GestureGo","ace_handSignals_POINT"] select random 1;
+_gesture = if (["ace_interaction"] call EFUNC(common,isModLoaded)) then {
+    if (EGVAR(interaction,ReloadMutex)) then {
+        ["GestureGo", if (((animationState ACE_player) select [0, 12]) in ["amovpercmstp", "amovpercmwlk", "amovpercmtac"] && weaponLowered ACE_player) then {
+                "ace_interaction_pointStandLowered"
+            } else {
+                "ace_interaction_point"
+            }
+        ] select random 1
+    } else {
+        "GestureGo"
+    };
 } else {
     "GestureGo"
 };
 
-ACE_player playActionNow _gesture
+ACE_player playActionNow _gesture;
 
 true

@@ -15,13 +15,13 @@
  * Public: No
  */
 
-if (GVAR(ReloadMutex)) exitWith {false};
+if (!GVAR(ReloadMutex)) exitWith {false};
 private "_gesture";
-_gesture = if (_this select [0,1] == "BI") then {
-    _this select [1];
+_gesture = if (_this select [0,2] == "BI") then {
+    _this select [2]
 } else {
     if (((animationState ACE_player) select [0, 12]) in ["amovpercmstp", "amovpercmwlk", "amovpercmtac"] && weaponLowered ACE_player) then {
-        format ["%1StandLowered", _this];
+        format ["%1StandLowered", _this]
     } else {
         _this
     };

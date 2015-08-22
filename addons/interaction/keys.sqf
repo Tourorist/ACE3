@@ -54,27 +54,35 @@
 
 {
     _x params ["_currentName","_Key"];
-    _code = (compile format [QUOTE('ace_handSignals_%1' call FUNC(playSignal)), _currentName]);
+
+    _code = if (_currentName select [0,1] == "BI") then {
+        (compile format [QUOTE(ACE_player playActionNow '%1'), _currentName])
+    } else {
+        (compile format [QUOTE('ace_interaction_%1' call FUNC(playSignal)), _currentName])
+    };
+
     [
-        "ACE Hand Signals",
+        "ACE3 Gestures",
         _currentName,
         format ["%1 %2", localize format[LSTRING(%1), _currentName],localize LSTRING(FREELOOK)],
         _code,
         {},
-        [_Key, [false, true, false]],
+        [_Key,  if (_Key == 0) then {[false, false, false]} else { [false, true, false] }],
         false
     ] call cba_fnc_addKeybind;
+
     if (56 in (actionKeys "LookAround")) then {
         [
-            "ACE Hand Signals",
+            "ACE3 Gestures",
             _currentName + "ALT",
             localize format[LSTRING(%1), _currentName],
             _code,
             {},
-            [_Key, [false, true, true]],
+            [_Key, if (_Key == 0) then {[false, false, false]} else { [false, true, true] }],
             false
         ] call cba_fnc_addKeybind;
     };
+
     true
 } count [
     ["stop", DIK_2],
